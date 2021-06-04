@@ -130,13 +130,14 @@
 
 
 					<form class="needs-validation" novalidate
-						style="margin-left:20%;margin-right:20%">
+						style="margin-left:20%;margin-right:20%" id="form">
 						<br> <b>TELL US ABOUT YOU</b><br>
 						<div class="row g-3">
 							<div class="col-sm-6">
 								<label for="firstName" class="form-label"></label> <input
 									type="text" class="form-control" id="firstName"
 									placeholder="First name" value="" required="">
+									<small id="name_msg">Error message</small>
 							</div>
 
 							<div class="col-sm-6">
@@ -150,6 +151,7 @@
 								<label for="lastName" class="form-label"></label> <input
 									type="text" id="lastName" placeholder="Last name" value=""
 									class="form-control" required="">
+									
 							</div>
 
 							<div class="col-sm-6">
@@ -174,6 +176,7 @@
 								<label for="phone" class="form-label"></label> <input
 									type="text" id="phone" placeholder="Mobile Phone Number"
 									required="" class="form-control">
+									<small id="phone_msg">Error message</small>
 							</div>
 						</div>
 						<div class="row g-3">
@@ -182,6 +185,7 @@
 									for="password" class="form-label"></label> <input
 									type="password" id="password" placeholder="password"
 									class="form-control">
+									<small id="pass_msg">Error message</small>
 							</div>
 							<button class="btn btn-danger" type="button" onclick="fromform()">Become
 								a Member</button>
