@@ -1,22 +1,24 @@
 
 function fromform() {
+	var xhr = new XMLHttpRequest();
 
-	$.ajax({
-		url: 'GetAjaxData',
-		type: 'POST',
-		dataType: 'json',
-		data: {
-		fname:$("#firstName").val(),
-		lname:$("#lastName").val(),
-		email:$("#email").val(),
-		password:$("#password").val(),
-		address:$("#address").val(),
-		phone:$("#phone").val(),
-		gender:$("#gender").val(),
-		
-		},
-		success: function(result) {
-			alert('SUCCESS');
+	xhr.onreadystatechange = function() {
+
+		if (this.status === 200 && this.readyState == 4) {
+			window.location = "PrintList.jsp";
 		}
-	});
+	};
+
+	xhr.open('POST', 'GetAjaxData', true);
+
+	let fname = $("#firstName").val();
+	let lname = $("#lastName").val();
+	let email = $("#email").val();
+	let password = $("#password").val();
+	let address = $("#address").val();
+	let phone = $("#phone").val();
+	let gender = $("#gender").val();
+	
+	xhr.send(fname + "," + lname + "," + email + "," + password + "," + address + "," + phone + "," + gender);
+
 }
