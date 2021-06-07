@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,24 @@ import Model.Login;
 @WebServlet("/GetAjaxData")
 public class GetAjaxData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			List<Login> regList = new FetchDataFromDatabsae().getData();
+			
+			request.setAttribute("reg_list", regList);
+						
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/PrintList.jsp");
+			
+			dispatcher.forward(request, response);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
